@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Labb1
+﻿namespace Labb1
 {
     internal class Program
     {
@@ -9,6 +7,8 @@ namespace Labb1
             Console.WriteLine("Write a string of numbers and letter");
 
             PrintNumbersBetweenRepeatingNumbers(Console.ReadLine());
+
+            Console.ReadLine();
         }
 
         static void PrintNumbersBetweenRepeatingNumbers(string input)
