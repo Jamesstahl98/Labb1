@@ -4,10 +4,24 @@
     {
         static void Main(string[] args)
         {
+            bool complete = false;
             Console.WriteLine("Write a string of numbers and letter");
+            while (!complete)
+            {
+                try
+                {
+                    PrintNumbersBetweenRepeatingNumbers(Console.ReadLine());
+                    complete = true;
+                }
 
-            PrintNumbersBetweenRepeatingNumbers(Console.ReadLine());
+                catch(OverflowException)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Series of numbers is too big, try writing a different string");
+                }
+            }
 
+            Console.WriteLine("Press any key to exit");
             Console.ReadLine();
         }
 
@@ -45,19 +59,9 @@
 
                         Console.WriteLine();
 
-                        UInt128 numberGroupUInt;
+                        UInt128 numberGroupUInt = UInt128.Parse(currentNumberGroup);
+                        numberGroupList.Add(numberGroupUInt);
 
-                        bool success = UInt128.TryParse(currentNumberGroup, out numberGroupUInt);
-                        if (success)
-                        {
-                            numberGroupList.Add(numberGroupUInt);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Series of numbers is too big, try a different number");
-
-                            return;
-                        }
                         break;
                     }
                 }
