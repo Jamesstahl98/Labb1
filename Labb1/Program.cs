@@ -13,7 +13,7 @@ namespace Labb1
 
         static void PrintNumbersBetweenRepeatingNumbers(string input)
         {
-            List<ulong> numberGroupList = new List<ulong>();
+            List<UInt128> numberGroupList = new List<UInt128>();
 
             Console.Clear();
 
@@ -45,12 +45,12 @@ namespace Labb1
 
                         Console.WriteLine();
 
-                        ulong numberGroupULong;
+                        UInt128 numberGroupUInt;
 
-                        bool success = UInt64.TryParse(currentNumberGroup, out numberGroupULong);
+                        bool success = UInt128.TryParse(currentNumberGroup, out numberGroupUInt);
                         if (success)
                         {
-                            numberGroupList.Add(numberGroupULong);
+                            numberGroupList.Add(numberGroupUInt);
                         }
                         else
                         {
@@ -66,9 +66,9 @@ namespace Labb1
             Console.WriteLine($"The sum of the number groups in the string is {GetSumOfList(numberGroupList)}");
         }
 
-        static ulong GetSumOfList(List<ulong> list)
+        static UInt128 GetSumOfList(List<UInt128> list)
         {
-            ulong sumOfList = 0;
+            UInt128 sumOfList = 0;
 
             for (int i = 0; i < list.Count; i++)
             {
