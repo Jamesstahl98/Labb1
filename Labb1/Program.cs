@@ -49,15 +49,7 @@
                     {
                         string currentNumberGroup = input.Substring(i, j-i+1);
 
-                        Console.Write(input.Substring(0, i));
-
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(currentNumberGroup);
-
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.Write(input.Substring(j+1));
-
-                        Console.WriteLine();
+                        PrintNumberString(i, j, currentNumberGroup, input);
 
                         UInt128 numberGroupUInt = UInt128.Parse(currentNumberGroup);
                         numberGroupList.Add(numberGroupUInt);
@@ -82,5 +74,17 @@
             return sumOfList;
         }
 
+        static void PrintNumberString(int startIndex, int stopIndex, string numberGroup, string input)
+        {
+            Console.Write(input.Substring(0, startIndex));
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(numberGroup);
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(input.Substring(stopIndex + 1));
+
+            Console.WriteLine();
+        }
     }
 }
