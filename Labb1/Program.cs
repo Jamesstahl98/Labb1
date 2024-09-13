@@ -22,13 +22,12 @@
             }
 
             Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         static void PrintNumbersBetweenRepeatingNumbers(string input)
         {
-            List<UInt128> numberGroupList = new List<UInt128>();
-
+            UInt128 sum = 0;
             Console.Clear();
 
             for (int i = 0; i < input.Length; i++)
@@ -49,29 +48,17 @@
                     {
                         string currentNumberGroup = input.Substring(i, j-i+1);
 
-                        PrintNumberString(i, j, currentNumberGroup, input);
+                        PrintNumberString(i, j+1, currentNumberGroup, input);
 
                         UInt128 numberGroupUInt = UInt128.Parse(currentNumberGroup);
-                        numberGroupList.Add(numberGroupUInt);
+                        sum += numberGroupUInt;
 
                         break;
                     }
                 }
             }
 
-            Console.WriteLine($"The sum of the number groups in the string is {GetSumOfList(numberGroupList)}");
-        }
-
-        static UInt128 GetSumOfList(List<UInt128> list)
-        {
-            UInt128 sumOfList = 0;
-
-            for (int i = 0; i < list.Count; i++)
-            {
-                sumOfList += list[i];
-            }
-
-            return sumOfList;
+            Console.WriteLine($"The sum of the number groups in the string is {sum}");
         }
 
         static void PrintNumberString(int startIndex, int stopIndex, string numberGroup, string input)
@@ -82,9 +69,7 @@
             Console.Write(numberGroup);
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write(input.Substring(stopIndex + 1));
-
-            Console.WriteLine();
+            Console.WriteLine(input.Substring(stopIndex));
         }
     }
 }
